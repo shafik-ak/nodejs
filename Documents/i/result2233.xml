@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ocrsdk.com/schema/recognizedBusinessCard-1.0.xsd http://ocrsdk.com/schema/recognizedBusinessCard-1.0.xsd" xmlns="http://ocrsdk.com/schema/recognizedBusinessCard-1.0.xsd">
+  <businessCard imageRotation="counterclockwise">
+    <field type="Phone">
+      <value>+49 8031 408960-0</value>
+    </field>
+    <field type="Fax">
+      <value>+49 8031 40896-16</value>
+    </field>
+    <field type="Mobile">
+      <value>+49 170 5200700</value>
+    </field>
+    <field type="Email">
+      <value>kujtim.Ijaci@paricon.de</value>
+    </field>
+    <field type="Web">
+      <value>www.paricon.de</value>
+    </field>
+    <field type="Address">
+      <value>Kufsteiner Str. 103 D-83026 Rosenheim</value>
+    </field>
+    <field type="Name">
+      <value>Kujtim Ljaci</value>
+    </field>
+    <field type="Name">
+      <value>Science</value>
+    </field>
+    <field type="Company">
+      <value>paricon AG</value>
+    </field>
+    <field type="Company">
+      <value>paricon</value>
+    </field>
+    <field type="Company">
+      <value>paricon</value>
+    </field>
+    <field type="Job">
+      <value>Manager</value>
+    </field>
+    <field type="Job">
+      <value>Master of Solution</value>
+    </field>
+    <field type="Text">
+      <value>paricon
+Kujtim Ljaci
+Master of
+Solution
+Science
+Manager
+paricon AG
+Kufsteiner Str. 103
+D-83026 Rosenheim
+TeL +49 8031 408960-0
+Fax +49 8031 40896-16
+Mobil +49 170 5200700
+kujtim. Ijaci@paricon .de
+www. paricon. de</value>
+    </field>
+  </businessCard>
+</document>

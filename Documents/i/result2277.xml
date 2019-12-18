@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ocrsdk.com/schema/recognizedBusinessCard-1.0.xsd http://ocrsdk.com/schema/recognizedBusinessCard-1.0.xsd" xmlns="http://ocrsdk.com/schema/recognizedBusinessCard-1.0.xsd">
+  <businessCard imageRotation="noRotation">
+    <field type="Phone">
+      <value>+49(89)205071-311</value>
+    </field>
+    <field type="Phone">
+      <value>81929</value>
+    </field>
+    <field type="Mobile">
+      <value>+49(172)8280 265</value>
+    </field>
+    <field type="Email">
+      <value>pkoerner@redhat.com</value>
+    </field>
+    <field type="Web">
+      <value>www.redhat.com</value>
+    </field>
+    <field type="Address">
+      <value>Werner-von-Siemens-RIng 14 Technopark II 85630 Grasbrunn (Munich</value>
+    </field>
+    <field type="Address">
+      <value>F: @pkoerner</value>
+    </field>
+    <field type="Name">
+      <value>Peter Körner</value>
+    </field>
+    <field type="Company">
+      <value>Red Hat GmbH</value>
+    </field>
+    <field type="Company">
+      <value>Enterprise</value>
+    </field>
+    <field type="Company">
+      <value>• redhat.</value>
+    </field>
+    <field type="Company">
+      <value>Germany redhat</value>
+    </field>
+    <field type="Job">
+      <value>Business Development Manager</value>
+    </field>
+    <field type="Job">
+      <value>Office</value>
+    </field>
+    <field type="Text">
+      <value>• redhat.
+Red Hat GmbH
+Werner-von-Siemens-RIng 14
+Technopark II
+85630 Grasbrunn (Munich Office)
+Germany
+www.redhat.com
+PETER KÖRNER
+Business Development Manager
+Enterprise Cloud Computing
+pkoerner@redhat.com
+D: +49(89)205071-311
+F: @pkoerner81929
+M: +49(172)8280 265</value>
+    </field>
+  </businessCard>
+</document>

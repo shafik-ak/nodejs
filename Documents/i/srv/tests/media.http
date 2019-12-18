@@ -1,0 +1,73 @@
+### Requires REST Client for VS Code
+### https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+###
+### Edit your settings.json and add the configuration from rest-client-config.json for local tests
+
+### Read Metadata using OData V2
+GET {{protocol}}://{{host}}:{{port}}/v2/catalog/$metadata
+
+### Read Pictures
+# curl http://localhost:4004/media/Pictures | jq
+GET {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard
+### Create first Picture
+# curl -X POST http://localhost:4004/media/Pictures -H "Accept: application/json" -H "Content-Type: application/json" --data '{ "ID": "da07ae51-d0d3-41e7-a737-2555a213e5a9" }'
+POST {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard
+Accept: application/json
+Content-Type: application/json
+
+{ "ID": "da07ae51-d0d3-41e7-a737-2555a213e5a9" ,"fileType":"image/jpeg"}
+
+
+### Create second Picture
+# curl -X POST http://localhost:4004/media/Pictures -H "Accept: application/json" -H "Content-Type: application/json" --data '{ "ID": "da07ae51-d0d3-41e7-a737-2555a213e5a9" }'
+POST {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard
+Accept: application/json
+Content-Type: application/json
+
+{ "ID": "da07ae51-d0d3-41e7-a737-2555a213e5a1" ,"fileType":"image/jpeg"}
+
+
+### Upload second Binary
+PUT {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard(da07ae51-d0d3-41e7-a737-2555a213e5a1)/photoFile
+Content-Type: image/jpeg
+
+< ./scan.jpg
+
+
+### Upload first Binary
+PUT {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard(da07ae51-d0d3-41e7-a737-2555a213e5a9)/photoFile
+Content-Type: image/jpeg
+
+< ./Test.jpg
+
+### Create Picture in one request
+# curl -v http://localhost:4004/media/Pictures -F file0=@./srv/tests/Test.png json='{ "ID": "da07ae51-d0d3-41e7-a737-2555a213e5a9" }' 
+# This results in the following eror:
+# {"error":{"code":null,"message":"No payload deserializer available for resource kind 'ENTITY' and mime type 'multipart/form-data'"}}* Rebuilt URL to: json= "ID": "da07ae51-d0d3-41e7-a737-2555a213e5a9"
+
+### Read second Binary
+# curl "http://localhost:4004/media/Pictures(da07ae51-d0d3-41e7-a737-2555a213e5a9)/content"
+GET {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard(da07ae51-d0d3-41e7-a737-2555a213e5a1)/photoFile
+
+### Read first Binary
+# curl "http://localhost:4004/media/Pictures(da07ae51-d0d3-41e7-a737-2555a213e5a9)/content"
+GET {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard(da07ae51-d0d3-41e7-a737-2555a213e5a9)/photoFile
+
+### Execute Action
+POST {{protocol}}://{{host}}:{{port}}/media/Pictures(da07ae51-d0d3-41e7-a737-2555a213e5a9)/extractBusinessCardInfo
+
+### Execute Action first a
+POST  {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard_demo?ID=guid%27da07ae51-d0d3-41e7-a737-2555a213e5a9%27
+Content-Type: application/json
+
+### Execute Action second  a
+POST  {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard_demo?ID=guid%27da07ae51-d0d3-41e7-a737-2555a213e5a1%27
+Content-Type: application/json
+
+### Delete first Image
+# curl -X DELETE "http://localhost:4004/media/Pictures(da07ae51-d0d3-41e7-a737-2555a213e5a9)"
+DELETE {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard(da07ae51-d0d3-41e7-a737-2555a213e5a9)
+
+### Delete second Image
+# curl -X DELETE "http://localhost:4004/media/Pictures(da07ae51-d0d3-41e7-a737-2555a213e5a1)"
+DELETE {{protocol}}://{{host}}:{{port}}/v2/catalog/BusinessCard(da07ae51-d0d3-41e7-a737-2555a213e5a1)
