@@ -1,10 +1,11 @@
 if (((typeof process) == 'undefined') || ((typeof window) != 'undefined')) {
 	throw new Error("This code must be run on server side under NodeJS");
 }
-var json = new Object();//new added
+
 var http = require("http");
 var https = require("https");
 var url = require("url");
+
 var fs = require('fs');
 
 var xml2js = null;
@@ -67,15 +68,15 @@ function ProcessingSettings() {
  * @param {ProcessingSettings} [settings] 		Image processing settings.
  * @param {function(error, taskData)} callback 	The callback function.
  */
-ocrsdk.prototype.processImage = function(blob, settings, userCallback) {
+ocrsdk.prototype.processImage = async function(blob, settings, userCallback) {
 	if (settings == null) {
 		settings = new ProcessingSettings();
 	}
 
 	var urlOptions = settings.asUrlParams();
-	var req = this._createTaskRequest('POST', '/processBusinessCard' + urlOptions,
+	var req =await this._createTaskRequest('POST', '/processBusinessCard' + urlOptions,
 			userCallback);
-			this._
+			/* this._ */
 	req.write(blob);
 	req.end();
 }
@@ -124,7 +125,7 @@ ocrsdk.prototype.waitForCompletion = function(taskId, userCallback) {
 		return;
 	}
 	var recognizer = this;
-	var waitTimeout = 5000;
+	var waitTimeout = 3000;
 
 	function waitFunction() {
 		recognizer.getTaskStatus(taskId,
@@ -157,12 +158,16 @@ ocrsdk.prototype.waitForCompletion = function(taskId, userCallback) {
  */
 ocrsdk.prototype.downloadResult = function(resultUrl, outputFilePath,
 		userCallback) {
-	 		
-	
+			var json=null;
+		//	json = new Object();//new added
+			json={"Phone":null,"Fax":null,"Mobile":null,"Email":null,"Web":null,"Address":null,"Name":null,"Company":null,"Job":null,"Text":null};
+
 	var file = fs.createWriteStream(outputFilePath);
 
 	var parsed = url.parse(resultUrl);
-	var parser = new xml2js.Parser();// new added	
+	var parser = new xml2js.Parser({
+		trim : true
+	});// new added	
 	var req = https.request(parsed, function(response) {
 		
 		response.on('data', function(data) {
@@ -173,7 +178,7 @@ ocrsdk.prototype.downloadResult = function(resultUrl, outputFilePath,
 			parser.parseString(data,function name(error,data) {
 			data.document.businessCard[0].field.forEach(f => {
           
-				if(json[f.$.type]===undefined){
+				if( json[f.$.type]===null || json[f.$.type]===undefined ){
 					json[f.$.type] = f.value[0]}
 					else{}
 				//console.log(f.$.type+":\t"+f.value[0])

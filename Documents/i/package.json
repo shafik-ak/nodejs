@@ -7,9 +7,13 @@
   "dependencies": {
     "@sap/cds": "^3.20.1",
     "@sap/cds-odata-v2-adapter-proxy": "^1.4.8",
+    "async.whilst": "^0.5.2",
     "express": "^4.17.1",
+    "file-type": "^12.4.2",
     "hdb": "^0.17.1",
-    "uuid": "^3.3.3"
+    "node-fetch": "^2.6.0",
+    "uuid": "^3.3.3",
+    "xmlhttprequest": "^1.8.0"
   },
   "engines": {
     "node": "^8.9"
