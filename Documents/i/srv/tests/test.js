@@ -14,9 +14,9 @@ if (((typeof process) == 'undefined') || ((typeof window) != 'undefined')) {
 // Change to https for secure connection
 var serviceUrl = 'http://cloud-eu.ocrsdk.com';
 // Name of application you created
-var appId = '571e6dcd-137a-4487-8e4f-690441ee7c45';
+var appId = '';
 // Password should be sent to your e-mail after application was created
-var password = '54gOzGhEDXxnSnb8BYX+sZY8';
+var password = '';
 
 var imagePath = 'scan.jpg';
 var outputPath = 'result.xml';
