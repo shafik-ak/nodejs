@@ -156,13 +156,13 @@ ocrsdk.prototype.waitForCompletion = function(taskId, userCallback) {
  * @param {string} outputFilePath 			Path where to save downloaded file
  * @param {function(error)} userCallback 	The callback function.
  */
-ocrsdk.prototype.downloadResult = function(resultUrl, outputFilePath,
+ocrsdk.prototype.downloadResult = function(resultUrl, 
 		userCallback) {
 			var json=null;
 		//	json = new Object();//new added
 			json={"Phone":null,"Fax":null,"Mobile":null,"Email":null,"Web":null,"Address":null,"Name":null,"Company":null,"Job":null,"Text":null};
 
-	var file = fs.createWriteStream(outputFilePath);
+	//var file = fs.createWriteStream(outputFilePath);
 
 	var parsed = url.parse(resultUrl);
 	var parser = new xml2js.Parser({
@@ -171,7 +171,7 @@ ocrsdk.prototype.downloadResult = function(resultUrl, outputFilePath,
 	var req = https.request(parsed, function(response) {
 		
 		response.on('data', function(data) {
-			file.write(data);
+		//	file.write(data);
 			//new added
 			
 			console.log("\n\n-----------------------"+data+"\n\n-----------------------------------------");
@@ -191,7 +191,7 @@ ocrsdk.prototype.downloadResult = function(resultUrl, outputFilePath,
 		});
 
 		response.on('end', function() {
-			file.end();
+		//	file.end();
 			userCallback(json, undefined);
 		});
 	});

@@ -7,9 +7,7 @@ var appId = '';
 var password = '';
 var ocrsdkModule = require('./tests/ocrsdk.js');
 //var xml2js = require('xml2js');
-var outputPath = 'result2277.xml';
-var postURL = 'http://cloud-eu.ocrsdk.com/processBusinessCard?language=German&exportFormat=xml'
-var encodedString = Buffer.from(appId + ':' + password).toString('base64')
+
 const fileType = require('file-type');
 
 var businesscardID = null;
@@ -81,10 +79,10 @@ function extractBusinessCardInfo(businessCard) {
             }
 
             console.log("Processing completed.");
-            console.log("Downloading result to " + outputPath);
+            //console.log("Downloading result to " + outputPath);
 
             ocrsdk
-                .downloadResult(taskData.resultUrl.toString(), outputPath,
+                .downloadResult(taskData.resultUrl.toString(),
                     downloadCompleted);
         }
 
